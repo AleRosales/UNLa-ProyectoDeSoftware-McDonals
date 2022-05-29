@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">McDonals</string>
+
+    <string-array name="class_of_entities">
+        <!--<item>"unla.ProyectoSoftware.modelo"</item>-->
+        <item>"unla.ProyectoSoftware.modelo.Producto"</item>
+        <item>"unla.ProyectoSoftware.modelo.Promociones"</item>
+    </string-array>
 </resources>

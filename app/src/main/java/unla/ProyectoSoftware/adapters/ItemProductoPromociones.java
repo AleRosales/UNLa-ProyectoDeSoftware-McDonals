@@ -1,6 +1,9 @@
 package unla.ProyectoSoftware.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,36 +11,35 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 import unla.ProyectoSoftware.R;
+import unla.ProyectoSoftware.modelo.Producto;
 
 public class ItemProductoPromociones extends BaseAdapter {
     Context contexto;
-    String[] nombres;
-    String[] precios;
 
-    int[]imagenes;
+    List<Producto> productoList;
     LayoutInflater inflater;
 
-    public ItemProductoPromociones(Context contexto, String[] nombres, String[] precios, int[] imagenes) {
+    public ItemProductoPromociones(Context contexto, List<Producto> productoList) {
         this.contexto = contexto;
-        this.nombres = nombres;
-        this.precios = precios;
-        this.imagenes = imagenes;
+        this.productoList=productoList;
     }
 
     @Override
     public int getCount() {
-        return nombres.length;
+        return productoList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return productoList.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return productoList.get(i).getId();
     }
 
     @Override
@@ -52,9 +54,14 @@ public class ItemProductoPromociones extends BaseAdapter {
 
         ImageView imgImg = (ImageView) itemView.findViewById(R.id.imageView);
 
-        tv_nombre.setText(nombres[position]);
-        tv_precio.setText(precios[position]);
-        imgImg.setImageResource(imagenes[position]);
+        tv_nombre.setText(productoList.get(position).getNombre());
+        tv_precio.setText(String.valueOf(productoList.get(position).getPrecio()));
+
+        if(productoList.get(position).getFoto()!=null && productoList.get(position).getFoto().length()>0) {
+            byte[] decodedString = Base64.decode(productoList.get(position).getFoto(), Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            imgImg.setImageBitmap(decodedByte);
+        }
         return itemView;
     }
 }
