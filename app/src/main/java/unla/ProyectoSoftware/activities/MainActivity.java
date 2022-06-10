@@ -64,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
                             if(data.getSerializableExtra("itemCarrito")!=null) {
                                 ItemCarrito itemCarrito = (ItemCarrito) data.getSerializableExtra("itemCarrito");
                                 boolean encontrado=false;
+                                if(carrito==null) {
+                                    carrito=new ArrayList<>();
+                                }
                                 for(int i=0;i<carrito.size();i++){
                                     if(carrito.get(i).getProducto().getId()==itemCarrito.getProducto().getId()){
                                         encontrado=true;
@@ -74,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
                                 if(!encontrado) {
                                     carrito.add(itemCarrito);
                                 }
+                            }else if(data.getSerializableExtra("carrito")!=null){
+                                carrito=(ArrayList) getIntent().getParcelableArrayListExtra("carrito");
                             }
                         }
                     }

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,7 +32,11 @@ public class ItemCarritoAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return carrito.size();
+        if(carrito!=null) {
+            return carrito.size();
+        }else{
+            return 0;
+        }
     }
 
     @Override
@@ -65,6 +70,23 @@ public class ItemCarritoAdapter extends BaseAdapter {
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
             imgImg.setImageBitmap(decodedByte);
         }
+
+        ImageButton imageButton=itemView.findViewById(R.id.iv_eliminar_productos);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                carrito.remove(position);
+                ItemCarritoAdapter.this.notifyDataSetChanged();
+            }
+        });
         return itemView;
+    }
+
+    public ArrayList<ItemCarrito> getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(ArrayList<ItemCarrito> carrito) {
+        this.carrito = carrito;
     }
 }

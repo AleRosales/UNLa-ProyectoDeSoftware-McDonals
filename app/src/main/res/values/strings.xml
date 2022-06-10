@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">McDonals</string>
+    <string name="google_maps_key">AIzaSyBLAK_6f_s1Z0spLOyb5z7X4nkSLH5weKY</string>
+    <string name="permission_required_toast">Permiso requerido</string>
+    <string name="permission_rationale_location">Permiso asd</string>
+    <string name="location_permission_denied">Permiso de ubicacion denegado</string>
 
     <string-array name="class_of_entities">
         <!--<item>"unla.ProyectoSoftware.modelo"</item>-->
