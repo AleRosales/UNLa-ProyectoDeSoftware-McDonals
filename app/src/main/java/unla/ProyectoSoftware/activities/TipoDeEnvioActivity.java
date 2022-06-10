@@ -87,9 +87,9 @@ public class TipoDeEnvioActivity extends AppCompatActivity implements GoogleMap.
         locales.add(new Locales("Mcdonals Banfield",-34.7511217,-58.405886));
         locales.add(new Locales("Mcdonals Lomas de zamora",-34.7627017,-58.4015575));
 
-        Spinner sp_tipoDeEnvio=findViewById(R.id.sp_tipo_envio);
+        /*Spinner sp_tipoDeEnvio=findViewById(R.id.sp_tipo_envio);
         String tipos[]={"Envio a domicilio","Retiro en el local"};
-        sp_tipoDeEnvio.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,tipos));
+        sp_tipoDeEnvio.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,tipos));*/
 
         Button btn_aceptar=findViewById(R.id.btn_aceptar_envio);
         ActivityResultLauncher<Intent> someActivityResultLauncher = registerForActivityResult(
